@@ -7,10 +7,28 @@ public class Commands extends ListenerAdapter {
 	public void onGuildMessageReceived(GuildMessageReceivedEvent event) {
 		String[] args = event.getMessage().getContentRaw().split("\\s+");
 		
-		if(args[0].equalsIgnoreCase(Main.prefix + "test")) {
+		/*How to parse commands ->
+		 * if(args[0].equalsIgnoreCase(Main.prefix + "test")) {
 			event.getChannel().sendTyping().queue();
 			event.getChannel().sendMessage("Cool beans.").queue();
-		}
+		}*/
+		
+		/*method to see all commands*/
+		
+	}
+	
+	/*prints all commands supported*/
+	public void getCommands() {
+		
+	}
+	
+	/*code for parsing ~blank command*/
+	public void blank() {
+		
+	}
+	/*code for parsing ~matching command*/
+	public void matching() {
+		
 	}
 	
 }

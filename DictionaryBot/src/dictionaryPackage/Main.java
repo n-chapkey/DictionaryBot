@@ -14,6 +14,7 @@ import net.dv8tion.jda.api.entities.*;
 public class Main {
 	public static JDA jda;
 	public static String prefix = "~";
+	
 	public static void main(String[] args) throws LoginException, FileNotFoundException {
 		
 		File tokenObj = new File("token.txt");
