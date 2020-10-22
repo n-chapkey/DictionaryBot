@@ -30,5 +30,12 @@ public class Commands extends ListenerAdapter {
 	public void matching() {
 		
 	}
+   
+   public void deleteAllWords () {
+      
+   }
 	
+   public void deleteAWord () {
+      
+   }
 }
