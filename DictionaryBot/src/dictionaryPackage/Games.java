@@ -1,5 +1,7 @@
 package dictionaryPackage;
 
+import java.util.ArrayList;
+
 public class Games {
 	
 	/*

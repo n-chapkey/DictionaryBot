@@ -9,15 +9,15 @@ public class Word {
       //set all the variable
    }
    
-   public int getName(){
+   public String getName(){
       return wordName;
    }
    
-   public int getDefinition(){
-      return wordDefition;
+   public String getDefinition(){
+      return wordDefinition;
    }
    
-   public int getSentence(){
+   public String getSentence(){
       return wordSentence;
    }
    
