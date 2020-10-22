@@ -7,22 +7,22 @@ public class Games {
 	 * Input: 3 Strings
 	 * Output: void
 	 */
-	public void fillInTheBlank(String word1, String word2, String word3) {
+	public void fillInTheBlank(ArrayList<Word> allWords) {
 		printfillInTheBlankMenu();
 		/*input*/
 	}
 	
 	/*menu for the fillintheblank game*/
-	private static void printfillInTheBlankMenu() {
+	public static void printfillInTheBlankMenu() {
 		System.out.println("");
 	}
 	
-	public void matching() {
+	public void matching(ArrayList<Word> allWords) {
 		printfillmatching();
 	}
 	
 	/*menu for the matching game*/
-	private static void printfillmatching() {
+	public static void printfillmatching() {
 		System.out.println("");
 	}
 	
