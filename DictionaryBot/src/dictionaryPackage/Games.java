@@ -10,6 +10,7 @@ public class Games {
 	public void fillInTheBlank(ArrayList<Word> allWords) {
 		printfillInTheBlankMenu();
 		/*input*/
+		
 	}
 	
 	/*menu for the fillintheblank game*/
@@ -19,6 +20,11 @@ public class Games {
 	
 	public void matching(ArrayList<Word> allWords) {
 		printfillmatching();
+		int rand = new Random();
+		Word answer = allWords.get(rand.nextInt(allWords.size()));
+		System.out.println("What word fits with this definition?\n");
+		System.out.println(answer.getDefinition() + "\n");
+		
 	}
 	
 	/*menu for the matching game*/
