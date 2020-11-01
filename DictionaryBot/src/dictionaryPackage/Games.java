@@ -1,6 +1,8 @@
 package dictionaryPackage;
 
 import java.util.ArrayList;
+import java.util.Random;
+import java.util.Scanner;
 
 public class Games {
 	
@@ -24,6 +26,7 @@ public class Games {
 		printfillmatching();
 		Scanner myAnswer = new Scanner(System.in);
 		int rand = new Random();
+		
 		Word answer = allWords.get(rand.nextInt(allWords.size()));
 		Word wrongchoice1 = allWords.get(rand.nextInt(allWords.size()));
 		Word wrongchoice2 = allWords.get(rand.nextInt(allWords.size()));

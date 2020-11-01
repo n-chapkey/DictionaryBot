@@ -23,14 +23,14 @@ public class WordScraper {
 	public void scanWebsite() throws IOException {
 		doc = Jsoup.connect(url +""+ theWord).get();
 		
-		Element def = doc.select("span.messageBody").first();
+		Element def = doc.select("span.one-click-content").first();
 		definition = "The definition is: " + def.text();
 		String title = doc.title();
 		System.out.println(definition);
 	}
 	
 	public static void main(String[] args) throws IOException {
-		WordScraper ws = new WordScraper("Sold");
+		WordScraper ws = new WordScraper("apple");
 		ws.scanWebsite();
 	}
 }
