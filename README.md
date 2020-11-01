@@ -1,4 +1,2 @@
 # DictionaryBot
-hmmmmmmmmmmmmmmmmmmmmmmmmmmmmm
-Test changes. -- Nick
-wtf
+Readme file
