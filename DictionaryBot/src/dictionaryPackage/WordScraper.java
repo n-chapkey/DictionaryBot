@@ -30,7 +30,7 @@ public class WordScraper {
 	}
 	
 	public static void main(String[] args) throws IOException {
-		WordScraper ws = new WordScraper("apple");
+		WordScraper ws = new WordScraper("cat");
 		ws.scanWebsite();
 	}
 }
