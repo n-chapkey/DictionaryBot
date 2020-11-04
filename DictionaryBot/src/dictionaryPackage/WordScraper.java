@@ -14,6 +14,7 @@ public class WordScraper {
 	String sent_url;
 	Document doc;
 
+
 	public WordScraper(String input) {
 		theWord = input;
 		definition = "";
@@ -35,7 +36,10 @@ public class WordScraper {
 		String title = doc.title();
 		System.out.println(definition);
 		System.out.println(sentence);
-		
+	  }
+		catch (Exception e){
+			System.out.println("not a valid word");
+		}
 	}
 
 	public static void main(String[] args) throws IOException {
