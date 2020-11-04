@@ -13,7 +13,7 @@ public class WordScraper {
 	String url;
 	String sent_url;
 	Document doc;
-	String sent_url;
+
 
 	public WordScraper(String input) {
 		theWord = input;
@@ -24,6 +24,7 @@ public class WordScraper {
 	}
 
 	public void scanWebsite() throws IOException {
+		try{
 		doc = Jsoup.connect(url +""+ theWord).get();
 		Document doc2 = Jsoup.connect(sent_url + theWord).get();
 
@@ -35,6 +36,10 @@ public class WordScraper {
 		String title = doc.title();
 		System.out.println(definition);
 		System.out.println(sentence);
+	  }
+		catch (Exception e){
+			System.out.println("not a valid word");
+		}
 	}
 
 	public static void main(String[] args) throws IOException {
