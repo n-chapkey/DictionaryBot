@@ -1,5 +1,5 @@
 package dictionaryPackage;
-
+import java.util.*;
 import java.util.ArrayList;
 import java.util.Random;
 import java.util.Scanner;
@@ -25,19 +25,19 @@ public class Games {
 	public void matching(ArrayList<Word> allWords) {
 		printfillmatching();
 		Scanner myAnswer = new Scanner(System.in);
-		int rand = new Random();
-		
+
+		Random rand = new Random();
 		Word answer = allWords.get(rand.nextInt(allWords.size()));
 		Word wrongchoice1 = allWords.get(rand.nextInt(allWords.size()));
 		Word wrongchoice2 = allWords.get(rand.nextInt(allWords.size()));
-		System.out.println("What word fits with this definition?\n" + answer.getDefinition() + "\n");
-		int[] choices = [answer.getName(), wrongchoice1.getName(), wrongchoice2.getName()];
+		System.out.println("What word fits with this definition?\n" + answer.getWordDefinition() + "\n");
+		String[] choices = {answer.getWordName(), wrongchoice1.getWordName(), wrongchoice2.getWordName()};
 		System.out.println("A. " + choices[0] + "\n" + "B. " + choices[1] + "\n" + "C. " + choices[2] + "\n");
-		int thechoice = myAnswer.nextLine();
-		if(thechoice.equals(answer.getName())){
+		String thechoice = myAnswer.nextLine();
+		if(thechoice.equals(answer.getWordName())){
 			System.out.println("Good job! Hope you didn't cheat!\n");
 		}else{
-			System.out.println("Too bad. The correct answer was " + answer.getWord() + ". You need to study harder.\n");
+			System.out.println("Too bad. The correct answer was " + answer.getWordName() + ". You need to study harder.\n");
 		}
 	}
 	

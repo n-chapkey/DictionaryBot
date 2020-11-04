@@ -10,7 +10,7 @@ public class WordScraper {
 	String theWord;
 	String definition;
 	String sentence;
-	String url;
+	String defUrl;
 	String sent_url;
 	Document doc;
 
@@ -19,13 +19,13 @@ public class WordScraper {
 		theWord = input;
 		definition = "";
 		sentence = "";
-		url = "https://www.dictionary.com/browse/";
+		defUrl = "https://www.dictionary.com/browse/";
 		sent_url = "https://sentence.yourdictionary.com/";
 	}
 
 	public void scanWebsite() throws IOException {
-		try{
-		doc = Jsoup.connect(url +""+ theWord).get();
+		
+		doc = Jsoup.connect(defUrl +""+ theWord).get();
 		Document doc2 = Jsoup.connect(sent_url + theWord).get();
 
 		Element def = doc.select("span.one-click-content").first();
@@ -43,7 +43,7 @@ public class WordScraper {
 	}
 
 	public static void main(String[] args) throws IOException {
-		WordScraper ws = new WordScraper("cat");
+		WordScraper ws = new WordScraper("43423423432");
 		ws.scanWebsite();
 	}
 }
