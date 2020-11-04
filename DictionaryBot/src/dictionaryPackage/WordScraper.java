@@ -13,7 +13,6 @@ public class WordScraper {
 	String url;
 	String sent_url;
 	Document doc;
-	String sent_url;
 
 	public WordScraper(String input) {
 		theWord = input;
