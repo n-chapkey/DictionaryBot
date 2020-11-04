@@ -24,7 +24,7 @@ public class WordScraper {
 	}
 
 	public void scanWebsite() throws IOException {
-		
+		try{
 		doc = Jsoup.connect(defUrl +""+ theWord).get();
 		Document doc2 = Jsoup.connect(sent_url + theWord).get();
 
