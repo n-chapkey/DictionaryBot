@@ -23,8 +23,8 @@ public class Main {
 		reader.close();
 		
 		JDA jda = JDABuilder.createDefault(token).build();
-		jda.getPresence().setStatus(OnlineStatus.DO_NOT_DISTURB);
-		jda.getPresence().setActivity(Activity.watching("Tutorials on Youtube."));
+		jda.getPresence().setStatus(OnlineStatus.ONLINE);
+		jda.getPresence().setActivity(Activity.listening("To kpop"));
 		
 		jda.addEventListener(new Commands());
 	}
