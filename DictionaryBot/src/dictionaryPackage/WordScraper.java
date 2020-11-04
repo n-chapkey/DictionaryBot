@@ -13,6 +13,7 @@ public class WordScraper {
 	String url;
 	String sent_url;
 	Document doc;
+	String sent_url;
 
 	public WordScraper(String input) {
 		theWord = input;
@@ -27,11 +28,10 @@ public class WordScraper {
 		Document doc2 = Jsoup.connect(sent_url + theWord).get();
 
 		Element def = doc.select("span.one-click-content").first();
-		Element sent = doc.select("p").first();
+		Element sent = doc2.select("p").first();
 
 		definition = "The definition is: " + def.text();
 		sentence = sent.text();
-
 		String title = doc.title();
 		System.out.println(definition);
 		System.out.println(sentence);
