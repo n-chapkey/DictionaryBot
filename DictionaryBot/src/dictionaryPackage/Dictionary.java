@@ -13,19 +13,21 @@ public class Dictionary {
 	public void appendWord(Word addedWord) {
 		allWords.add(addedWord);
 	}
+	
 	public void deleteWordByString(String removedWord) {
 		for(int i=0;i<allWords.size();i++) {
-			if(allWords.get(i).getName() == removedWord) {
+			if(allWords.get(i).getWordName() == removedWord) {
 				allWords.remove(i);
 				return;
 			}
 		}
 		System.out.println("Word could not be removed");
 	}
+	
 	public Word getWord(String name) {
 		Word theWord = null;
 		for(int i=0;i<allWords.size();i++) {
-			if(allWords.get(i).getName() == name) {
+			if(allWords.get(i).getWordName() == name) {
 				theWord = allWords.get(i);
 			}
 		}

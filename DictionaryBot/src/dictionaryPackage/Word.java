@@ -9,16 +9,29 @@ public class Word {
       //set all the variable
    }
    
-   public String getName(){
-      return wordName;
-   }
-   
-   public String getDefinition(){
-      return wordDefinition;
-   }
-   
-   public String getSentence(){
-      return wordSentence;
-   }
+
+public String getWordName() {
+	return wordName;
+}
+
+public void setWordName(String wordName) {
+	this.wordName = wordName;
+}
+
+public String getWordDefinition() {
+	return wordDefinition;
+}
+
+public void setWordDefinition(String wordDefinition) {
+	this.wordDefinition = wordDefinition;
+}
+
+public String getWordSentence() {
+	return wordSentence;
+}
+
+public void setWordSentence(String wordSentence) {
+	this.wordSentence = wordSentence;
+}
    
 }
