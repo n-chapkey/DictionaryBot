@@ -8,7 +8,7 @@ public class Commands extends ListenerAdapter {
 	public void onGuildMessageReceived(GuildMessageReceivedEvent event) {
 		String[] args = event.getMessage().getContentRaw().split("\\s+");
 		
-		//getCommands(event, args);
+		getCommands(event, args);
 		
 	}
 	
