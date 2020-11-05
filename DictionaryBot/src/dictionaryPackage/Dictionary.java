@@ -4,10 +4,10 @@ import java.util.ArrayList;
 
 public class Dictionary {
 	
-	private ArrayList<Word> allWords;
+	public ArrayList<Word> allWords;
 	
 	public Dictionary(){
-		allWords = null;
+		allWords = new ArrayList<Word>();
 	}
 	
 	public void appendWord(Word addedWord) {
@@ -16,7 +16,7 @@ public class Dictionary {
 	
 	public void deleteWordByString(String removedWord) {
 		for(int i=0;i<allWords.size()-1;i++) {
-			if(allWords.get(i).getWordName() == removedWord) {
+			if(allWords.get(i).getWordName().equals(removedWord)) {
 				allWords.remove(i);
 				return;
 			}
@@ -27,7 +27,7 @@ public class Dictionary {
 	public Word getWord(String name) {
 		Word theWord = null;
 		for(int i=0;i<allWords.size()-1;i++) {
-			if(allWords.get(i).getWordName() == name) {
+			if(allWords.get(i).getWordName().equals(name)) {
 				theWord = allWords.get(i);
 			}
 		}

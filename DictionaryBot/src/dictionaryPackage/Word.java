@@ -7,6 +7,9 @@ public class Word {
    
    public Word(String wordName, String wordDefinition, String wordSentence){
       //set all the variable
+	   this.wordName = wordName;
+	   this.wordDefinition = wordDefinition;
+	   this.wordSentence = wordSentence;
    }
    
 

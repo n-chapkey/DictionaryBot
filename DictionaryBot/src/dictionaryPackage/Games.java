@@ -11,7 +11,7 @@ public class Games {
 	 * Input: 3 Strings
 	 * Output: void
 	 */
-	public void fillInTheBlank(ArrayList<Word> allWords) {
+	public static void fillInTheBlank(ArrayList<Word> allWords) {
 		// Stop Flag
 		boolean continueFlag = true;
 		
@@ -57,13 +57,13 @@ public class Games {
 						
 			// Display Game 
 			int optionDisplay = rand.nextInt(3);
-			System.out.println(answer.getSentence());
+			System.out.println(answer.getWordSentence());
 			
 			if(optionDisplay == 0) {
 				
-				System.out.println("\tOption 1: " + answer.getName());
-				System.out.println("\tOption 2: " + wordChoice1.getName());
-				System.out.println("\tOption 3: " + wordChoice2.getName());
+				System.out.println("\tOption 1: " + answer.getWordName());
+				System.out.println("\tOption 2: " + wordChoice1.getWordName());
+				System.out.println("\tOption 3: " + wordChoice2.getWordName());
 				System.out.println("\nMake your selection! 1, 2, or 3:");
 				System.out.println(">");
 				
@@ -71,7 +71,7 @@ public class Games {
 				userInput=k.nextLine();
 				
 				if(userInput.equals("1")) {
-					System.out.println("Congrats! The correct word was: " + answer.getName());
+					System.out.println("Congrats! The correct word was: " + answer.getWordName());
 				} else {
 					
 					while (!userInput.equals("1")) {
@@ -83,15 +83,15 @@ public class Games {
 						userInput=k.nextLine();
 					}
 					
-					System.out.println("Congrats! The correct word was: " + answer.getName());
+					System.out.println("Congrats! The correct word was: " + answer.getWordName());
 				} // end if statement
 				
 			} 
 			else if (optionDisplay == 1) {
 				
-					System.out.println("\tOption 1: " + wordChoice2.getName());
-					System.out.println("\tOption 2: " + wordChoice1.getName());
-					System.out.println("\tOption 3: " + answer.getName());
+					System.out.println("\tOption 1: " + wordChoice2.getWordName());
+					System.out.println("\tOption 2: " + wordChoice1.getWordName());
+					System.out.println("\tOption 3: " + answer.getWordName());
 					System.out.println("\nMake your selection! 1, 2, or 3:");
 					System.out.println(">");
 					
@@ -99,7 +99,7 @@ public class Games {
 					userInput=k.nextLine();
 					
 					if(userInput.equals("3")) {
-						System.out.println("Congrats! The correct word was: " + answer.getName());
+						System.out.println("Congrats! The correct word was: " + answer.getWordName());
 					} else {
 						
 						while (!userInput.equals("3")) {
@@ -111,14 +111,14 @@ public class Games {
 							userInput=k.nextLine();
 						}
 						
-						System.out.println("Congrats! The correct word was: " + answer.getName());
+						System.out.println("Congrats! The correct word was: " + answer.getWordName());
 					} // end if statement
 			}
 			else if (optionDisplay == 2) {
 				
-					System.out.println("\tOption 1: " + wordChoice2.getName());
-					System.out.println("\tOption 2: " + answer.getName());
-					System.out.println("\tOption 3: " + wordChoice1.getName());
+					System.out.println("\tOption 1: " + wordChoice2.getWordName());
+					System.out.println("\tOption 2: " + answer.getWordName());
+					System.out.println("\tOption 3: " + wordChoice1.getWordName());
 					System.out.println("\nMake your selection! 1, 2, or 3:");
 					System.out.println(">");
 					
@@ -126,7 +126,7 @@ public class Games {
 					userInput=k.nextLine();
 					
 					if(userInput.equals("2")) {
-						System.out.println("Congrats! The correct word was: " + answer.getName());
+						System.out.println("Congrats! The correct word was: " + answer.getWordName());
 					} else {
 						
 						while (!userInput.equals("2")) {
@@ -138,14 +138,14 @@ public class Games {
 							userInput=k.nextLine();
 						}
 						
-						System.out.println("Congrats! The correct word was: " + answer.getName());
+						System.out.println("Congrats! The correct word was: " + answer.getWordName());
 					} // end if statement
 					
 			} else {
 				
-					System.out.println("\tOption 1: " + wordChoice2.getName());
-					System.out.println("\tOption 2: " + wordChoice1.getName());
-					System.out.println("\tOption 3: " + answer.getName());
+					System.out.println("\tOption 1: " + wordChoice2.getWordName());
+					System.out.println("\tOption 2: " + wordChoice1.getWordName());
+					System.out.println("\tOption 3: " + answer.getWordName());
 					System.out.println("\nMake your selection! 1, 2, or 3:");
 					System.out.println(">");
 					
@@ -153,7 +153,7 @@ public class Games {
 					userInput=k.nextLine();
 					
 					if(userInput.equals("3")) {
-						System.out.println("Congrats! The correct word was: " + answer.getName());
+						System.out.println("Congrats! The correct word was: " + answer.getWordName());
 					} else {
 						
 						while (!userInput.equals("3")) {
@@ -165,7 +165,7 @@ public class Games {
 							userInput=k.nextLine();
 						}
 						
-						System.out.println("Congrats! The correct word was: " + answer.getName());
+						System.out.println("Congrats! The correct word was: " + answer.getWordName());
 					} // end if statement
 					
 			}
@@ -210,6 +210,22 @@ public class Games {
 		System.out.println("");
 	}
 	
-	
+	/* testing */
+	public static void main(String[] args) {
+		Dictionary dict = new Dictionary();
+		
+		/*For adding custom words: first write the name of the word, then the definition, then the word in a sentence.*/
+		Word spinach = new Word("spinach", "spinach is a vegetable", "I don't like to eat spinach");
+		Word apples = new Word("apples", "apples are bright colored fruits", "I enjoy eating apples");
+		Word pizza = new Word("pizza", "pizza is not a fruit or vegetable to be honest", "Pizza is the best food");
+		
+		/*add words to the dictionary*/
+		dict.appendWord(spinach);
+		dict.appendWord(apples);
+		dict.appendWord(pizza);
+			
+		
+		fillInTheBlank(dict.allWords);
+	}
 
 }
