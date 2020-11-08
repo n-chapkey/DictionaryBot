@@ -40,17 +40,17 @@ public class Commands extends ListenerAdapter {
 		}
 	}
 
-	public void define(GuildMessageReceivedEvent event,String[] arguments) {
+	public void define(GuildMessageReceivedEvent event,String[] arguments, Dictionary newDict) {
 		if(arguments[0].equalsIgnoreCase(Main.prefix + "define") ) {
-		EmbedBuilder commandsMenu = new EmbedBuilder();
-		commandsMenu.setColor(0x66d8ff);
+		EmbedBuilder definitionMenu = new EmbedBuilder();
+		definitionMenu.setColor(0x66d8ff);
 		Word temp = new Word(arguments[1]);
 		newDict.appendWord(temp);
-		commandsMenu.setDescription(temp.getDef());
-		event.getChannel().sendMessage(commandsMenu.build()).queue();}
+		definitionMenu.setDescription(temp.getDef());
+		event.getChannel().sendMessage(definitionMenu.build()).queue();}
 	}
 
-	public void allWords(GuildMessageReceivedEvent event,String[] arguments) {
+	public void allWords(GuildMessageReceivedEvent event,String[] arguments, Dictionary newDict) {
 		String result = newDict.getAllWords();
 		EmbedBuilder commandsMenu = new EmbedBuilder();
 		commandsMenu.setColor(0x66d8ff);
