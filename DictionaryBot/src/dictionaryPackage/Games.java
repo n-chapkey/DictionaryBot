@@ -221,33 +221,12 @@ public class Games {
 
 	
 	public void matching(GuildMessageReceivedEvent event,String[] arguments, Dictionary allWords) {
-		printfillmatching();
-		
+			printfillmatching();
 			Scanner myAnswer = new Scanner(System.in);
 			//String playing = myAnswer.nextLine();
 			
 			
 			Random rand = new Random();
-			/*int amountCorrect = 0;
-			ArrayList<Word> choices = new ArrayList<Word>();
-			if(allWords.size() < 5) {
-				Word word1 = allWords.get(rand.nextInt(allWords.size()));
-				if(allWords.size() == 1) {
-					choices.add(word1);
-					return;
-				}else {
-					choices.add(word1);
-					for(int i = 1; i < allWords.size(); i++) {
-						Word wordNew = allWords.get(rand.nextInt(allWords.size()));
-						while(wordNew.equals(choices.get(i-1))) {
-							wordNew = allWords.get(rand.nextInt(allWords.size()));
-						}
-					}
-				}
-				for(int i = 0; i < choices.size(); i++) {
-					System.out.println(choices.get(i).getWordName() + "\n");
-				}
-			}*/
 			Word answer = allWords.get(rand.nextInt(allWords.size()));
 			Word wrongchoice1 = allWords.get(rand.nextInt(allWords.size()));
 			while(wrongchoice1.equals(answer)) {
@@ -257,7 +236,7 @@ public class Games {
 			while(wrongchoice2.equals(answer) || wrongchoice2.equals(wrongchoice1)) {
 				wrongchoice2 = allWords.get(rand.nextInt(allWords.size()));
 			}
-			System.out.println("What word fits with this definition?\n" + answer.getWordDefinition() + "\n");
+			System.out.println("What word fits with this definition?\n" + answer.getDefinition() + "\n");
 			String[] choices = {answer.getWordName(), wrongchoice1.getWordName(), wrongchoice2.getWordName()};
 			int correct = rand.nextInt(3);
 			if(correct == 0) {
@@ -276,18 +255,17 @@ public class Games {
 			
 			System.out.println("Thanks for playing!\n");
 		
-}
+	}
 	
-	/*menu for the matching game*/
 	public static void printfillmatching() {
 		System.out.println("Welcome to matching! Here are the rules.\n");
 		System.out.println("We will give you a definition, and you have to figure out the word that matches it.\n");
+		System.out.println("Do you want to play?\n");
+		System.out.println("[1] Yes\n");
+		System.out.println("[2] No\n");
 		System.out.println("We will give you three choices. Type out the word from the three choices that you think is correct.\n");
 		System.out.println("Get ready to play!\n");
 		/*System.out.println("[1] Yes\n");
 		System.out.println("[2] No\n");*/
 	}
-	
-	}*/
-
 }
