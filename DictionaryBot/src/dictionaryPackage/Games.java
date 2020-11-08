@@ -251,12 +251,12 @@ public class Games {
 	public static void main(String[] args) {
 		Dictionary dict = new Dictionary();
 		
-		/*For adding custom words: first write the name of the word, then the definition, then the word in a sentence.*/
+		//For adding custom words: first write the name of the word, then the definition, then the word in a sentence.
 		Word spinach = new Word("spinach", "spinach is a vegetable", "I don't like to eat spinach");
 		Word apples = new Word("apples", "apples are bright colored fruits", "I enjoy eating apples");
 		Word pizza = new Word("pizza", "pizza is not a fruit or vegetable to be honest", "Pizza is the best food");
 		
-		/*add words to the dictionary*/
+		//add words to the dictionary
 		dict.appendWord(spinach);
 		dict.appendWord(apples);
 		dict.appendWord(pizza);
