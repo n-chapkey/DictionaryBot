@@ -21,9 +21,7 @@ public class WordScraper {
 		sentence = "";
 		defUrl = "https://www.dictionary.com/browse/";
 		sent_url = "https://sentence.yourdictionary.com/";
-	}
 
-	public void scanWebsite() throws IOException {
 		try{
 		doc = Jsoup.connect(defUrl +""+ theWord).get();
 		Document doc2 = Jsoup.connect(sent_url + theWord).get();
@@ -40,10 +38,18 @@ public class WordScraper {
 		catch (Exception e){
 			System.out.println("not a valid word");
 		}
+
+	}
+
+	public String getDef() {
+		return definition;
+	}
+
+	public String getWord() {
+		return theWord;
 	}
 
 	public static void main(String[] args) throws IOException {
-		WordScraper ws = new WordScraper("43423423432");
-		ws.scanWebsite();
+		Word ws = new Word("43423423432");
 	}
 }
