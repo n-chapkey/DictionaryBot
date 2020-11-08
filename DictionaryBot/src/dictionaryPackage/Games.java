@@ -14,12 +14,12 @@ public class Games {
 
 	public static void main(String[] args) {
 		//Create Word Objects
-		Word word1 = new Word("dog","the dog definition goes here","I just purchased a ?");
-		Word word2 = new Word("cat","the cat definition goes here","I dislike ?");
-		Word word3 = new Word("house","the house definition goes here","I sleep inside of a ?");
-		Word word4 = new Word("donut","the donut definition goes here","I just ate a ?");
-		Word word5 = new Word("coffee","the coffee definition goes here","This is a good morning drink?");
-		Word word6 = new Word("bird","the bird definition goes here","My ? can fly");
+		Word word1 = new Word("dog");
+		Word word2 = new Word("cat");
+		Word word3 = new Word("house");
+		Word word4 = new Word("donut");
+		Word word5 = new Word("coffee");
+		Word word6 = new Word("bird");
 		
 		// Create ArrayList
 		ArrayList<Word> allWords = new ArrayList<Word>();
@@ -89,7 +89,7 @@ public class Games {
 						
 			// Display Game 
 			int optionDisplay = rand.nextInt(3);
-			System.out.println(answer.getWordSentence());
+			System.out.println(answer.getSentence());
 			
 			if(optionDisplay == 0) {
 				
@@ -274,7 +274,7 @@ public class Games {
 			
 			System.out.println("Thanks for playing!\n");
 		
-	}
+}
 	
 	/*menu for the matching game*/
 	public static void printfillmatching() {
@@ -286,22 +286,6 @@ public class Games {
 		System.out.println("[2] No\n");*/
 	}
 	
-	/* testing 
-	public static void main(String[] args) {
-		Dictionary dict = new Dictionary();
-		
-		/*For adding custom words: first write the name of the word, then the definition, then the word in a sentence.*/
-		/*Word spinach = new Word("spinach", "spinach is a vegetable", "I don't like to eat spinach");
-		Word apples = new Word("apples", "apples are bright colored fruits", "I enjoy eating apples");
-		Word pizza = new Word("pizza", "pizza is not a fruit or vegetable to be honest", "Pizza is the best food");
-		
-		/*add words to the dictionary*/
-		/*dict.appendWord(spinach);
-		dict.appendWord(apples);
-		dict.appendWord(pizza);
-			
-		
-		fillInTheBlank(dict.allWords);
 	}*/
 
 }
