@@ -64,7 +64,7 @@ public class Commands extends ListenerAdapter {
 		
 	}
 	/*code for parsing ~matching command*/
-	public void matching(GuildMessageReceivedEvent event,String[] arguments) {
+	public void matching(GuildMessageReceivedEvent event,String[] arguments, Dictionary newDict) {
 		
 	}
 

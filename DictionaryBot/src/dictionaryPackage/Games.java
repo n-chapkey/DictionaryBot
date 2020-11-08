@@ -4,6 +4,8 @@ import java.util.ArrayList;
 import java.util.Random;
 import java.util.Scanner;
 
+import net.dv8tion.jda.api.events.message.guild.GuildMessageReceivedEvent;
+
 public class Games {
 	
 	/*
@@ -22,15 +24,15 @@ public class Games {
 		Word word6 = new Word("bird");
 		
 		// Create ArrayList
-		ArrayList<Word> allWords = new ArrayList<Word>();
+		Dictionary allWords = new Dictionary();
 		
 		// Add all of our words
-		allWords.add(word1);
-		allWords.add(word2);
-		allWords.add(word3);
-		allWords.add(word4);
-		allWords.add(word5);
-		allWords.add(word6);
+		allWords.appendWord(word1);
+		allWords.appendWord(word2);
+		allWords.appendWord(word3);
+		allWords.appendWord(word4);
+		allWords.appendWord(word5);
+		allWords.appendWord(word6);
 		
 		/*
 		for(Word w : allWords) {
@@ -38,12 +40,12 @@ public class Games {
 		}
 		 */
 		
-		Games game1 = new Games();
-		game1.matching(allWords);
+		/*Games game1 = new Games();
+		game1.matching(allWords);*/
 		
 	}
 
-	public void fillInTheBlank(ArrayList<Word> allWords) {
+	public void fillInTheBlank(GuildMessageReceivedEvent event,String[] arguments, Dictionary allWords) {
 		// Stop Flag
 		boolean continueFlag = true;
 		
@@ -218,7 +220,7 @@ public class Games {
 	}
 
 	
-	public void matching(ArrayList<Word> allWords) {
+	public void matching(GuildMessageReceivedEvent event,String[] arguments, Dictionary allWords) {
 		printfillmatching();
 		Scanner myAnswer = new Scanner(System.in);
 
