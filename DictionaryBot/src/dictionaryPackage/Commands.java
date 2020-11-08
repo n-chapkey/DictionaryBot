@@ -18,6 +18,7 @@ public class Commands extends ListenerAdapter {
 		if(arguments[0].equalsIgnoreCase(Main.prefix + "commands")) {
 			EmbedBuilder commandsMenu = new EmbedBuilder();
 			commandsMenu.setColor(0x66d8ff);
+			commandsMenu.setTitle("Commands Menu");
 			commandsMenu.setDescription("**The commands are: \n**"
 					+ " **~define**  for defining words. \n"
 					+ " **~blank** for fill in the blank game \n"
