@@ -11,6 +11,37 @@ public class Games {
 	 * Input: 3 Strings
 	 * Output: void
 	 */
+	public static void main(String[] args) {
+		//Create Word Objects
+		Word word1 = new Word("dog","the dog definition goes here","I just purchased a ?");
+		Word word2 = new Word("cat","the cat definition goes here","I dislike ?");
+		Word word3 = new Word("house","the house definition goes here","I sleep inside of a ?");
+		Word word4 = new Word("donut","the donut definition goes here","I just ate a ?");
+		Word word5 = new Word("coffee","the coffee definition goes here","This is a good morning drink?");
+		Word word6 = new Word("bird","the bird definition goes here","My ? can fly");
+		
+		// Create ArrayList
+		ArrayList<Word> allWords = new ArrayList<Word>();
+		
+		// Add all of our words
+		allWords.add(word1);
+		allWords.add(word2);
+		allWords.add(word3);
+		allWords.add(word4);
+		allWords.add(word5);
+		allWords.add(word6);
+		
+		/*
+		for(Word w : allWords) {
+			System.out.println(w.getName());
+		}
+		 */
+		
+		Games game1 = new Games();
+		game1.matching(allWords);
+		
+	}
+
 	public void fillInTheBlank(ArrayList<Word> allWords) {
 		// Stop Flag
 		boolean continueFlag = true;
@@ -195,19 +226,36 @@ public class Games {
 		Word wrongchoice1 = allWords.get(rand.nextInt(allWords.size()));
 		Word wrongchoice2 = allWords.get(rand.nextInt(allWords.size()));
 		System.out.println("What word fits with this definition?\n" + answer.getDefinition() + "\n");
+		int correct = rand.nextInt(3);
 		String[] choices = {answer.getName(), wrongchoice1.getName(), wrongchoice2.getName()};
-		System.out.println("A. " + choices[0] + "\n" + "B. " + choices[1] + "\n" + "C. " + choices[2] + "\n");
+		if(correct == 0) {
+			System.out.println("A. " + choices[0] + "\n" + "B. " + choices[1] + "\n" + "C. " + choices[2] + "\n");
+		}else if(correct == 1) {
+			System.out.println("A. " + choices[1] + "\n" + "B. " + choices[0] + "\n" + "C. " + choices[2] + "\n");
+		}else if(correct == 2) {
+			System.out.println("A. " + choices[1] + "\n" + "B. " + choices[2] + "\n" + "C. " + choices[0] + "\n");
+		}
 		String thechoice = myAnswer.nextLine();
+		while(!thechoice.equals(choices[0]) && !thechoice.equals(choices[1]) && !thechoice.equals(choices[2])) {
+			System.out.println("Can you please take this seriously?\n");
+			System.out.println("Please pick a word from the options given.\n");
+			thechoice = myAnswer.nextLine();
+		}
 		if(thechoice.equals(answer.getName())){
 			System.out.println("Good job! Hope you didn't cheat!\n");
 		}else{
 			System.out.println("Too bad. The correct answer was " + answer.getName() + ". You need to study harder.\n");
 		}
+		System.out.println("Thanks for playing!\n");
 	}
 	
 	/*menu for the matching game*/
 	public static void printfillmatching() {
-		System.out.println("");
+		System.out.println("Welcome to matching! Here are the rules.\n");
+		System.out.println("We will give you a definition, and you have to figure out the word that matches it.\n");
+		System.out.println("Do you want to play?\n");
+		System.out.println("[1] Yes\n");
+		System.out.println("[2] No\n");
 	}
 	
 	
