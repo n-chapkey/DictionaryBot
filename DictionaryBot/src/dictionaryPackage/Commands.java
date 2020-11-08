@@ -29,11 +29,11 @@ public class Commands extends ListenerAdapter {
 	}
 	
 	/*code for parsing ~blank command*/
-	public void blank() {
+	public void blank(GuildMessageReceivedEvent event,String[] arguments) {
 		
 	}
 	/*code for parsing ~matching command*/
-	public void matching() {
+	public void matching(GuildMessageReceivedEvent event,String[] arguments) {
 		
 	}
    
