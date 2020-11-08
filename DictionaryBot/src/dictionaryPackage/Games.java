@@ -11,7 +11,39 @@ public class Games {
 	 * Input: 3 Strings
 	 * Output: void
 	 */
-	public static void fillInTheBlank(ArrayList<Word> allWords) {
+
+	public static void main(String[] args) {
+		//Create Word Objects
+		Word word1 = new Word("dog","the dog definition goes here","I just purchased a ?");
+		Word word2 = new Word("cat","the cat definition goes here","I dislike ?");
+		Word word3 = new Word("house","the house definition goes here","I sleep inside of a ?");
+		Word word4 = new Word("donut","the donut definition goes here","I just ate a ?");
+		Word word5 = new Word("coffee","the coffee definition goes here","This is a good morning drink?");
+		Word word6 = new Word("bird","the bird definition goes here","My ? can fly");
+		
+		// Create ArrayList
+		ArrayList<Word> allWords = new ArrayList<Word>();
+		
+		// Add all of our words
+		allWords.add(word1);
+		allWords.add(word2);
+		allWords.add(word3);
+		allWords.add(word4);
+		allWords.add(word5);
+		allWords.add(word6);
+		
+		/*
+		for(Word w : allWords) {
+			System.out.println(w.getName());
+		}
+		 */
+		
+		Games game1 = new Games();
+		game1.matching(allWords);
+		
+	}
+
+	public void fillInTheBlank(ArrayList<Word> allWords) {
 		// Stop Flag
 		boolean continueFlag = true;
 		
@@ -203,14 +235,19 @@ public class Games {
 		}else{
 			System.out.println("Too bad. The correct answer was " + answer.getWordName() + ". You need to study harder.\n");
 		}
+		System.out.println("Thanks for playing!\n");
 	}
 	
 	/*menu for the matching game*/
 	public static void printfillmatching() {
-		System.out.println("");
+		System.out.println("Welcome to matching! Here are the rules.\n");
+		System.out.println("We will give you a definition, and you have to figure out the word that matches it.\n");
+		System.out.println("Do you want to play?\n");
+		System.out.println("[1] Yes\n");
+		System.out.println("[2] No\n");
 	}
 	
-	/* testing */
+	/* testing 
 	public static void main(String[] args) {
 		Dictionary dict = new Dictionary();
 		
@@ -226,6 +263,6 @@ public class Games {
 			
 		
 		fillInTheBlank(dict.allWords);
-	}
+	}*/
 
 }
