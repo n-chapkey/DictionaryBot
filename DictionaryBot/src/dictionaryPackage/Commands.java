@@ -30,6 +30,7 @@ public class Commands extends ListenerAdapter {
 		if(arguments[0].equalsIgnoreCase(Main.prefix + "commands")) {
 			EmbedBuilder commandsMenu = new EmbedBuilder();
 			commandsMenu.setColor(0x66d8ff);
+			commandsMenu.setTitle("Commands Menu");
 			commandsMenu.setDescription("**The commands are: \n**"
 					+ " **~define**  for defining words. \n"
 					+ " **~blank** for fill in the blank game \n"
@@ -58,12 +59,13 @@ public class Commands extends ListenerAdapter {
 	}
 
 	/*code for parsing ~blank command*/
-	public void blank() {
 
+	public void blank(GuildMessageReceivedEvent event,String[] arguments) {
+		
 	}
 	/*code for parsing ~matching command*/
-	public void matching() {
-
+	public void matching(GuildMessageReceivedEvent event,String[] arguments) {
+		
 	}
 
    public void deleteAllWords () {
