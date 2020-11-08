@@ -38,7 +38,7 @@ public class Dictionary {
 	public String getAllWords() {
 		String temp = "";
 		for(int i = 0; i < allWords.size(); i++) {
-			temp += (i+1) + ". " + allWords.get(i).getWordName() + " -- " + allWords.get(i).getWordDefinition() + "\n\n";
+			temp += (i+1) + ". " + allWords.get(i).getWordName() + " -- " + allWords.get(i).getDefinition() + "\n\n";
 		}
 
 		return temp;

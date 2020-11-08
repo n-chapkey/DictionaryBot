@@ -14,12 +14,12 @@ public class Games {
 
 	public static void main(String[] args) {
 		//Create Word Objects
-		Word word1 = new Word("dog","the dog definition goes here","I just purchased a ?");
-		Word word2 = new Word("cat","the cat definition goes here","I dislike ?");
-		Word word3 = new Word("house","the house definition goes here","I sleep inside of a ?");
-		Word word4 = new Word("donut","the donut definition goes here","I just ate a ?");
-		Word word5 = new Word("coffee","the coffee definition goes here","This is a good morning drink?");
-		Word word6 = new Word("bird","the bird definition goes here","My ? can fly");
+		Word word1 = new Word("dog");
+		Word word2 = new Word("cat");
+		Word word3 = new Word("house");
+		Word word4 = new Word("donut");
+		Word word5 = new Word("coffee");
+		Word word6 = new Word("bird");
 		
 		// Create ArrayList
 		ArrayList<Word> allWords = new ArrayList<Word>();
@@ -89,7 +89,7 @@ public class Games {
 						
 			// Display Game 
 			int optionDisplay = rand.nextInt(3);
-			System.out.println(answer.getWordSentence());
+			System.out.println(answer.getSentence());
 			
 			if(optionDisplay == 0) {
 				
@@ -226,7 +226,7 @@ public class Games {
 		Word answer = allWords.get(rand.nextInt(allWords.size()));
 		Word wrongchoice1 = allWords.get(rand.nextInt(allWords.size()));
 		Word wrongchoice2 = allWords.get(rand.nextInt(allWords.size()));
-		System.out.println("What word fits with this definition?\n" + answer.getWordDefinition() + "\n");
+		System.out.println("What word fits with this definition?\n" + answer.getDefinition() + "\n");
 		String[] choices = {answer.getWordName(), wrongchoice1.getWordName(), wrongchoice2.getWordName()};
 		System.out.println("A. " + choices[0] + "\n" + "B. " + choices[1] + "\n" + "C. " + choices[2] + "\n");
 		String thechoice = myAnswer.nextLine();

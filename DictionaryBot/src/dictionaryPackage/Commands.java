@@ -40,7 +40,7 @@ public class Commands extends ListenerAdapter {
 		}
 	}
 
-	public void define(GuildMessageReceivedEvent event,String[] arguments, Dictionary newDict) {
+	public void define(GuildMessageReceivedEvent event,String[] arguments) {
 		if(arguments[0].equalsIgnoreCase(Main.prefix + "define") ) {
 		EmbedBuilder definitionMenu = new EmbedBuilder();
 		definitionMenu.setColor(0x66d8ff);
@@ -50,7 +50,7 @@ public class Commands extends ListenerAdapter {
 		event.getChannel().sendMessage(definitionMenu.build()).queue();}
 	}
 
-	public void allWords(GuildMessageReceivedEvent event,String[] arguments, Dictionary newDict) {
+	public void allWords(GuildMessageReceivedEvent event,String[] arguments) {
 		String result = newDict.getAllWords();
 		EmbedBuilder commandsMenu = new EmbedBuilder();
 		commandsMenu.setColor(0x66d8ff);
@@ -60,7 +60,7 @@ public class Commands extends ListenerAdapter {
 
 	/*code for parsing ~blank command*/
 
-	public void blank(GuildMessageReceivedEvent event,String[] arguments) {
+	public void blank(GuildMessageReceivedEvent event,String[] arguments, Dictionary newDict) {
 		
 	}
 	/*code for parsing ~matching command*/
