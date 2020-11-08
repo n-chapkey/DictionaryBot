@@ -34,7 +34,8 @@ public class Commands extends ListenerAdapter {
 			commandsMenu.setDescription("**The commands are: \n**"
 					+ " **~define**  for defining words. \n"
 					+ " **~blank** for fill in the blank game \n"
-					+ " **~matching** for matching game");
+					+ " **~matching** for matching game \n"
+					+ " **~getAllWords** for displaying all words in the dictionary.");
 			event.getChannel().sendMessage(commandsMenu.build()).queue();
 
 		}
