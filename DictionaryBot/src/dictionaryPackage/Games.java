@@ -222,49 +222,72 @@ public class Games {
 	
 	public void matching(GuildMessageReceivedEvent event,String[] arguments, Dictionary allWords) {
 		printfillmatching();
-		Scanner myAnswer = new Scanner(System.in);
-
-		Random rand = new Random();
-		Word answer = allWords.get(rand.nextInt(allWords.size()));
-		Word wrongchoice1 = allWords.get(rand.nextInt(allWords.size()));
-		Word wrongchoice2 = allWords.get(rand.nextInt(allWords.size()));
-		System.out.println("What word fits with this definition?\n" + answer.getDefinition() + "\n");
-		String[] choices = {answer.getWordName(), wrongchoice1.getWordName(), wrongchoice2.getWordName()};
-		System.out.println("A. " + choices[0] + "\n" + "B. " + choices[1] + "\n" + "C. " + choices[2] + "\n");
-		String thechoice = myAnswer.nextLine();
-		if(thechoice.equals(answer.getWordName())){
-			System.out.println("Good job! Hope you didn't cheat!\n");
-		}else{
-			System.out.println("Too bad. The correct answer was " + answer.getWordName() + ". You need to study harder.\n");
-		}
-		System.out.println("Thanks for playing!\n");
-	}
+		
+			Scanner myAnswer = new Scanner(System.in);
+			//String playing = myAnswer.nextLine();
+			
+			
+			Random rand = new Random();
+			/*int amountCorrect = 0;
+			ArrayList<Word> choices = new ArrayList<Word>();
+			if(allWords.size() < 5) {
+				Word word1 = allWords.get(rand.nextInt(allWords.size()));
+				if(allWords.size() == 1) {
+					choices.add(word1);
+					return;
+				}else {
+					choices.add(word1);
+					for(int i = 1; i < allWords.size(); i++) {
+						Word wordNew = allWords.get(rand.nextInt(allWords.size()));
+						while(wordNew.equals(choices.get(i-1))) {
+							wordNew = allWords.get(rand.nextInt(allWords.size()));
+						}
+					}
+				}
+				for(int i = 0; i < choices.size(); i++) {
+					System.out.println(choices.get(i).getWordName() + "\n");
+				}
+			}*/
+			Word answer = allWords.get(rand.nextInt(allWords.size()));
+			Word wrongchoice1 = allWords.get(rand.nextInt(allWords.size()));
+			while(wrongchoice1.equals(answer)) {
+				wrongchoice1 = allWords.get(rand.nextInt(allWords.size()));
+			}
+			Word wrongchoice2 = allWords.get(rand.nextInt(allWords.size()));
+			while(wrongchoice2.equals(answer) || wrongchoice2.equals(wrongchoice1)) {
+				wrongchoice2 = allWords.get(rand.nextInt(allWords.size()));
+			}
+			System.out.println("What word fits with this definition?\n" + answer.getWordDefinition() + "\n");
+			String[] choices = {answer.getWordName(), wrongchoice1.getWordName(), wrongchoice2.getWordName()};
+			int correct = rand.nextInt(3);
+			if(correct == 0) {
+				System.out.println("A. " + choices[0] + "\n" + "B. " + choices[1] + "\n" + "C. " + choices[2] + "\n");
+			}else if(correct == 1) {
+				System.out.println("A. " + choices[1] + "\n" + "B. " + choices[0] + "\n" + "C. " + choices[2] + "\n");
+			}else if(correct == 2){
+				System.out.println("A. " + choices[1] + "\n" + "B. " + choices[2] + "\n" + "C. " + choices[0] + "\n");
+			}
+			String thechoice = myAnswer.nextLine();
+			if(thechoice.equals(answer.getWordName())){
+				System.out.println("Good job! Hope you didn't cheat!\n");
+			}else{
+				System.out.println("Too bad. The correct answer was " + answer.getWordName() + ". You need to study harder.\n");
+			}
+			
+			System.out.println("Thanks for playing!\n");
+		
+}
 	
 	/*menu for the matching game*/
 	public static void printfillmatching() {
 		System.out.println("Welcome to matching! Here are the rules.\n");
 		System.out.println("We will give you a definition, and you have to figure out the word that matches it.\n");
-		System.out.println("Do you want to play?\n");
-		System.out.println("[1] Yes\n");
-		System.out.println("[2] No\n");
+		System.out.println("We will give you three choices. Type out the word from the three choices that you think is correct.\n");
+		System.out.println("Get ready to play!\n");
+		/*System.out.println("[1] Yes\n");
+		System.out.println("[2] No\n");*/
 	}
 	
-	/* testing 
-	public static void main(String[] args) {
-		Dictionary dict = new Dictionary();
-		
-		//For adding custom words: first write the name of the word, then the definition, then the word in a sentence.
-		Word spinach = new Word("spinach", "spinach is a vegetable", "I don't like to eat spinach");
-		Word apples = new Word("apples", "apples are bright colored fruits", "I enjoy eating apples");
-		Word pizza = new Word("pizza", "pizza is not a fruit or vegetable to be honest", "Pizza is the best food");
-		
-		//add words to the dictionary
-		dict.appendWord(spinach);
-		dict.appendWord(apples);
-		dict.appendWord(pizza);
-			
-		
-		fillInTheBlank(dict.allWords);
 	}*/
 
 }
