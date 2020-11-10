@@ -7,6 +7,7 @@ import java.util.Scanner;
 import net.dv8tion.jda.api.events.message.guild.GuildMessageReceivedEvent;
 
 public class Games {
+Dictionary newDict = new Dictionary();
 	
 	/*
 	 * Fill in the blank game
@@ -44,34 +45,39 @@ public class Games {
 		game1.matching(allWords);*/
 		
 	}
+	
+	public void onGuildMessageReceived(GuildMessageReceivedEvent event) {
+		String[] args = event.getMessage().getContentRaw().split("\\s+");
 
-	public void fillInTheBlank(GuildMessageReceivedEvent event,String[] arguments, Dictionary allWords) {
+
+		if(args[0].equalsIgnoreCase(Main.prefix + "fitb")) {
+			fillInTheBlank(event, args);
+		}
+		else if(args[0].equalsIgnoreCase(Main.prefix + "fitb_menu")) {
+			printfillInTheBlankMenu(event);
+		}
+		
+
+
+public void fillInTheBlank(GuildMessageReceivedEvent event,String[] arguments, Dictionary allWords) {
 		// Stop Flag
 		boolean continueFlag = true;
+		// TODO Should the Dictionary contain a method to get a random word?
+		// TODO what will the GuildMessageReceivedEvent contain when the user elects ~blank from the commands
+		// TODO How does the Games class know what the correct word is and what the sentence to display is?
+		String word = "";
 		
 		// While True Continue Playing Game
-		while(continueFlag == true) {
-			printfillInTheBlankMenu();
-			
-			// Get User Selection (1 or 2)
-			String userInput;
-			Scanner k= new Scanner(System.in);
-			userInput=k.nextLine();
-			
+		while(continueFlag == true) {	
 			// Check not equal to 1 
-			if(!userInput.equals("1")) {
+			if(args[1].equals("1")) {
 				System.out.println("Thank you for playing!");
 				return;
 			}
 			
 			// The Game Continues
 			
-			// Create Random Class
-			Random rand = new Random();
-			
-			// Get random element as the answer
-			int answerIdx = rand.nextInt(allWords.size());
-			Word answer = allWords.get(answerIdx);
+
 			
 			// Get wrong choice 1
 			int wrongChoice1Idx = rand.nextInt(allWords.size());
@@ -209,23 +215,33 @@ public class Games {
 	} // end method
 	
 	/*menu for the fillintheblank game*/
-	public static void printfillInTheBlankMenu() {
-		System.out.println("\n ----------------------------------------");
-		System.out.println("***Welcome to the Fill In The Blank Game***");
-		System.out.println("---------------------------------------- \n");
-		System.out.println("Please select one of the following:");
-		System.out.println("[1] : Play Game");
-		System.out.println("[2] : Exit");
-		System.out.println(">");
+	public static void printfillInTheBlankMenu(GuildMessageReceivedEvent event) {
+		EmbedBuilder fitbMenu = new EmbedBuilder();
+		fitbMenu.setColor(0x66d8ff);
+		fitbMenu.setTitle("Fill in the blank menu");
+		fitbMenu.setDescription("Please select one of the following: \n**"
+				                  + "[1] : Play Game \n"
+				                  + "[2] : Exit \n");;
+		event.getChannel().sendMessage(fitbMenu.build()).queue();
 	}
 
-	
 	public void matching(GuildMessageReceivedEvent event,String[] arguments, Dictionary allWords) {
 			printfillmatching();
 			Scanner myAnswer = new Scanner(System.in);
-			//String playing = myAnswer.nextLine();
+			//Random rand = new Random();
+			ArrayList<Word> temp = allWords;
+			int sizes = temp.size();
+			ArrayList<Word> choices = new ArrayList<Word>();
+			for(int i = 0; i <= sizes; i++) {
+				Word question = temp.remove((int)Math.random() * (sizes - 1));
+				choices.set(i, question);
+			}
 			
+			for(int i = 0; i <= choices.size(); i++) {
+				System.out.println(choices.get(i).getDefinition() + "\n");
+			}
 			
+
 			Random rand = new Random();
 			Word answer = allWords.get(rand.nextInt(allWords.size()));
 			Word wrongchoice1 = allWords.get(rand.nextInt(allWords.size()));
@@ -251,7 +267,7 @@ public class Games {
 				System.out.println("Good job! Hope you didn't cheat!\n");
 			}else{
 				System.out.println("Too bad. The correct answer was " + answer.getWordName() + ". You need to study harder.\n");
-			}
+			}*/
 			
 			System.out.println("Thanks for playing!\n");
 		
