@@ -4,6 +4,8 @@ import java.util.ArrayList;
 import java.util.Random;
 import java.util.Scanner;
 
+import net.dv8tion.jda.api.events.message.guild.GuildMessageReceivedEvent;
+
 public class Games {
 Dictionary newDict = new Dictionary();
 	
@@ -23,15 +25,15 @@ Dictionary newDict = new Dictionary();
 		Word word6 = new Word("bird");
 		
 		// Create ArrayList
-		ArrayList<Word> allWords = new ArrayList<Word>();
+		Dictionary allWords = new Dictionary();
 		
 		// Add all of our words
-		allWords.add(word1);
-		allWords.add(word2);
-		allWords.add(word3);
-		allWords.add(word4);
-		allWords.add(word5);
-		allWords.add(word6);
+		allWords.appendWord(word1);
+		allWords.appendWord(word2);
+		allWords.appendWord(word3);
+		allWords.appendWord(word4);
+		allWords.appendWord(word5);
+		allWords.appendWord(word6);
 		
 		/*
 		for(Word w : allWords) {
@@ -39,8 +41,8 @@ Dictionary newDict = new Dictionary();
 		}
 		 */
 		
-		Games game1 = new Games();
-		game1.matching(allWords);
+		/*Games game1 = new Games();
+		game1.matching(allWords);*/
 		
 	}
 	
@@ -56,9 +58,8 @@ Dictionary newDict = new Dictionary();
 		}
 		
 
-	}
 
-	public void fillInTheBlank(GuildMessageReceivedEvent event, String[] args) {
+public void fillInTheBlank(GuildMessageReceivedEvent event,String[] arguments, Dictionary allWords) {
 		// Stop Flag
 		boolean continueFlag = true;
 		// TODO Should the Dictionary contain a method to get a random word?
@@ -224,9 +225,8 @@ Dictionary newDict = new Dictionary();
 		event.getChannel().sendMessage(fitbMenu.build()).queue();
 	}
 
-	public void matching(ArrayList<Word> allWords) {
+	public void matching(GuildMessageReceivedEvent event,String[] arguments, Dictionary allWords) {
 			printfillmatching();
-		
 			Scanner myAnswer = new Scanner(System.in);
 			//Random rand = new Random();
 			ArrayList<Word> temp = allWords;
@@ -241,7 +241,9 @@ Dictionary newDict = new Dictionary();
 				System.out.println(choices.get(i).getDefinition() + "\n");
 			}
 			
-			/*Word answer = allWords.get(rand.nextInt(allWords.size()));
+
+			Random rand = new Random();
+			Word answer = allWords.get(rand.nextInt(allWords.size()));
 			Word wrongchoice1 = allWords.get(rand.nextInt(allWords.size()));
 			while(wrongchoice1.equals(answer)) {
 				wrongchoice1 = allWords.get(rand.nextInt(allWords.size()));
@@ -269,18 +271,17 @@ Dictionary newDict = new Dictionary();
 			
 			System.out.println("Thanks for playing!\n");
 		
-}
+	}
 	
-	/*menu for the matching game*/
 	public static void printfillmatching() {
 		System.out.println("Welcome to matching! Here are the rules.\n");
 		System.out.println("We will give you a definition, and you have to figure out the word that matches it.\n");
+		System.out.println("Do you want to play?\n");
+		System.out.println("[1] Yes\n");
+		System.out.println("[2] No\n");
 		System.out.println("We will give you three choices. Type out the word from the three choices that you think is correct.\n");
 		System.out.println("Get ready to play!\n");
 		/*System.out.println("[1] Yes\n");
 		System.out.println("[2] No\n");*/
 	}
-	
-
-
 }

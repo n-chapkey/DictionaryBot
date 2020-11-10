@@ -6,6 +6,10 @@ public class Dictionary {
 
 	public ArrayList<Word> allWords;
 
+	public void setAllWords(ArrayList<Word> allWords) {
+		this.allWords = allWords;
+	}
+
 	public Dictionary(){
 		allWords = new ArrayList<Word>();
 	}
@@ -34,6 +38,10 @@ public class Dictionary {
 
 		return theWord;
 	}
+	
+	public Word get(int x) {
+		return allWords.get(x);
+	}
 
 	public String getAllWords() {
 		String temp = "";
@@ -44,7 +52,7 @@ public class Dictionary {
 		return temp;
 	}
 
-	public int cap() {
+	public int size() {
 		return allWords.size();
 	}
 }
