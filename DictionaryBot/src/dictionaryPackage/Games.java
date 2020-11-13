@@ -41,8 +41,8 @@ Dictionary newDict = new Dictionary();
 		}
 		 */
 		
-		/*Games game1 = new Games();
-		game1.matching(allWords);*/
+		Games game1 = new Games();
+		game1.matching(allWords);
 		
 	}
 	
@@ -229,11 +229,11 @@ public void fillInTheBlank(GuildMessageReceivedEvent event,String[] arguments, D
 			printfillmatching();
 			Scanner myAnswer = new Scanner(System.in);
 			//Random rand = new Random();
-			ArrayList<Word> temp = allWords;
+			Dictionary temp = allWords;
 			int sizes = temp.size();
 			ArrayList<Word> choices = new ArrayList<Word>();
 			for(int i = 0; i <= sizes; i++) {
-				Word question = temp.remove((int)Math.random() * (sizes - 1));
+				Word question = temp.get((int)Math.random() * (sizes - 1));
 				choices.set(i, question);
 			}
 			
@@ -242,7 +242,7 @@ public void fillInTheBlank(GuildMessageReceivedEvent event,String[] arguments, D
 			}
 			
 
-			Random rand = new Random();
+			/*Random rand = new Random();
 			Word answer = allWords.get(rand.nextInt(allWords.size()));
 			Word wrongchoice1 = allWords.get(rand.nextInt(allWords.size()));
 			while(wrongchoice1.equals(answer)) {
