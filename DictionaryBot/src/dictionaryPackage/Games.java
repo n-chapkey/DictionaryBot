@@ -42,8 +42,6 @@ Dictionary newDict = new Dictionary();
 		}
 		 */
 
-		Games game1 = new Games();
-		game1.matching(allWords);
 
 	}
 

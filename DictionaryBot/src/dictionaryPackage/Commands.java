@@ -1,5 +1,7 @@
 package dictionaryPackage;
 
+import java.util.ArrayList;
+
 import net.dv8tion.jda.api.EmbedBuilder;
 import net.dv8tion.jda.api.events.message.guild.GuildMessageReceivedEvent;
 import net.dv8tion.jda.api.hooks.ListenerAdapter;
@@ -65,10 +67,10 @@ public class Commands extends ListenerAdapter {
 
 	/*code for parsing ~blank command*/
 
-	public void blank(GuildMessageReceivedEvent event,String[] arguments, Dictionary newDict) {
+	public void blank(GuildMessageReceivedEvent event,String[] arguments) {
 		if(arguments[0].equalsIgnoreCase(Main.prefix + "blank")) {
 		Games new_game = new Games();
-		blankAnswers = new_game.blank(newDict, event);
+		blankAnswers = new_game.fillInTheBlank(newDict, event);
 		}
 		else if(arguments[0].equalsIgnoreCase(Main.prefix + "answerBlank:")){
 			//blankUserAnswer = false;
