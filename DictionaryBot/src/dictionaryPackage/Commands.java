@@ -7,7 +7,8 @@ import net.dv8tion.jda.api.hooks.ListenerAdapter;
 public class Commands extends ListenerAdapter {
 
 	Dictionary newDict = new Dictionary();
-	
+	ArrayList<String> blankAnswers;
+
 	public void onGuildMessageReceived(GuildMessageReceivedEvent event) {
 		String[] args = event.getMessage().getContentRaw().split("\\s+");
 
@@ -20,6 +21,9 @@ public class Commands extends ListenerAdapter {
 		}
 		else if(args[0].equalsIgnoreCase(Main.prefix + "getAllWords")) {
 			allWords(event, args);
+		}
+		else if(args[0].equalsIgnoreCase(Main.prefix + "blank") || args[0].equalsIgnoreCase(Main.prefix + "answerBlank:")) {
+			blank(event, args);
 		}
 
 	}
@@ -62,11 +66,35 @@ public class Commands extends ListenerAdapter {
 	/*code for parsing ~blank command*/
 
 	public void blank(GuildMessageReceivedEvent event,String[] arguments, Dictionary newDict) {
-		
+		if(arguments[0].equalsIgnoreCase(Main.prefix + "blank")) {
+		Games new_game = new Games();
+		blankAnswers = new_game.blank(newDict, event);
+		}
+		else if(arguments[0].equalsIgnoreCase(Main.prefix + "answerBlank:")){
+			//blankUserAnswer = false;
+			EmbedBuilder commandsMenu = new EmbedBuilder();
+			commandsMenu.setColor(0x66d8ff);
+			String retUser = "";
+			boolean allTrue = true;
+			for(int i = 0; i < blankAnswers.size(); i++) {
+				if(!(arguments[i+1].equals(blankAnswers.get(i)))) {
+					allTrue = false;
+					int n = i+1;
+					retUser += "You got number " + n + " wrong! It was supposed to be \"" + blankAnswers.get(i) + "\"\n";
+				}
+			}
+			if(allTrue) {
+				commandsMenu.setDescription("Congratulations! You got all of them right");
+			}
+			else {
+				commandsMenu.setDescription(retUser);
+			}
+			event.getChannel().sendMessage(commandsMenu.build()).queue();
+		}
 	}
 	/*code for parsing ~matching command*/
 	public void matching(GuildMessageReceivedEvent event,String[] arguments, Dictionary newDict) {
-		
+
 	}
 
    public void deleteAllWords () {
