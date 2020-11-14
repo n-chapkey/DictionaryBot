@@ -9,7 +9,7 @@ import net.dv8tion.jda.api.events.message.guild.GuildMessageReceivedEvent;
 
 public class Games {
 Dictionary newDict = new Dictionary();
-	
+
 	/*
 	 * Fill in the blank game
 	 * Input: 3 Strings
@@ -24,10 +24,10 @@ Dictionary newDict = new Dictionary();
 		Word word4 = new Word("donut");
 		Word word5 = new Word("coffee");
 		Word word6 = new Word("bird");
-		
+
 		// Create ArrayList
 		Dictionary allWords = new Dictionary();
-		
+
 		// Add all of our words
 		allWords.appendWord(word1);
 		allWords.appendWord(word2);
@@ -35,186 +35,56 @@ Dictionary newDict = new Dictionary();
 		allWords.appendWord(word4);
 		allWords.appendWord(word5);
 		allWords.appendWord(word6);
-		
+
 		/*
 		for(Word w : allWords) {
 			System.out.println(w.getName());
 		}
 		 */
-		
+
 		Games game1 = new Games();
 		game1.matching(allWords);
-		
+
 	}
-	
-	public void onGuildMessageReceived(GuildMessageReceivedEvent event) {
-		String[] args = event.getMessage().getContentRaw().split("\\s+");
 
 
-		if(args[0].equalsIgnoreCase(Main.prefix + "fitb")) {
-			fillInTheBlank(event, args);
-		}
-		else if(args[0].equalsIgnoreCase(Main.prefix + "fitb_menu")) {
-			printfillInTheBlankMenu(event);
-		}
-		
+public ArrayList<String> fillInTheBlank(Dictionary temp_1, GuildMessageReceivedEvent event) {
 
+	ArrayList<Word> dic_temp = temp_1.getList();
+	ArrayList<Word> dic = new ArrayList<Word>();
 
-public void fillInTheBlank(GuildMessageReceivedEvent event,String[] arguments, Dictionary allWords) {
-		// Stop Flag
-		boolean continueFlag = true;
-		// TODO Should the Dictionary contain a method to get a random word?
-		// TODO what will the GuildMessageReceivedEvent contain when the user elects ~blank from the commands
-		// TODO How does the Games class know what the correct word is and what the sentence to display is?
-		String word = "";
-		
-		// While True Continue Playing Game
-		while(continueFlag == true) {	
-			// Check not equal to 1 
-			if(args[1].equals("1")) {
-				System.out.println("Thank you for playing!");
-				return;
-			}
-			
-			// The Game Continues
-			
+	for(int i = 0; i < dic_temp.size(); i ++) {
+		dic.add(dic_temp.get(i));
+	}
 
-			
-			// Get wrong choice 1
-			int wrongChoice1Idx = rand.nextInt(allWords.size());
-			// check to make sure it wasn't the answerIdx
-			while(wrongChoice1Idx == answerIdx) {
-				wrongChoice1Idx = rand.nextInt(allWords.size());
-			}
-			Word wordChoice1 = allWords.get(wrongChoice1Idx);
-			
-			// Get wrong choice 2
-			int wrongChoice2Idx = rand.nextInt(allWords.size());
-			// check to make sure it wasn't the answerIdx and wordChoice1
-			while(wrongChoice2Idx == answerIdx || wrongChoice2Idx == wrongChoice1Idx) {
-				wrongChoice2Idx = rand.nextInt(allWords.size());
-			}
-			Word wordChoice2 = allWords.get(wrongChoice2Idx);
-						
-			// Display Game 
-			int optionDisplay = rand.nextInt(3);
-			System.out.println(answer.getSentence());
-			
-			if(optionDisplay == 0) {
-				
-				System.out.println("\tOption 1: " + answer.getWordName());
-				System.out.println("\tOption 2: " + wordChoice1.getWordName());
-				System.out.println("\tOption 3: " + wordChoice2.getWordName());
-				System.out.println("\nMake your selection! 1, 2, or 3:");
-				System.out.println(">");
-				
-				// Get user input 
-				userInput=k.nextLine();
-				
-				if(userInput.equals("1")) {
-					System.out.println("Congrats! The correct word was: " + answer.getWordName());
-				} else {
-					
-					while (!userInput.equals("1")) {
-							
-						System.out.println("Incorrect! Please try again.");
-						System.out.println("Make your selection! 1, 2, or 3:");
-						System.out.println("> ");
-						// Get user input 
-						userInput=k.nextLine();
-					}
-					
-					System.out.println("Congrats! The correct word was: " + answer.getWordName());
-				} // end if statement
-				
-			} 
-			else if (optionDisplay == 1) {
-				
-					System.out.println("\tOption 1: " + wordChoice2.getWordName());
-					System.out.println("\tOption 2: " + wordChoice1.getWordName());
-					System.out.println("\tOption 3: " + answer.getWordName());
-					System.out.println("\nMake your selection! 1, 2, or 3:");
-					System.out.println(">");
-					
-					// Get user input 
-					userInput=k.nextLine();
-					
-					if(userInput.equals("3")) {
-						System.out.println("Congrats! The correct word was: " + answer.getWordName());
-					} else {
-						
-						while (!userInput.equals("3")) {
-								
-							System.out.println("Incorrect! Please try again.");
-							System.out.println("Make your selection! 1, 2, or 3:");
-							System.out.println("> ");
-							// Get user input 
-							userInput=k.nextLine();
-						}
-						
-						System.out.println("Congrats! The correct word was: " + answer.getWordName());
-					} // end if statement
-			}
-			else if (optionDisplay == 2) {
-				
-					System.out.println("\tOption 1: " + wordChoice2.getWordName());
-					System.out.println("\tOption 2: " + answer.getWordName());
-					System.out.println("\tOption 3: " + wordChoice1.getWordName());
-					System.out.println("\nMake your selection! 1, 2, or 3:");
-					System.out.println(">");
-					
-					// Get user input 
-					userInput=k.nextLine();
-					
-					if(userInput.equals("2")) {
-						System.out.println("Congrats! The correct word was: " + answer.getWordName());
-					} else {
-						
-						while (!userInput.equals("2")) {
-								
-							System.out.println("Incorrect! Please try again.");
-							System.out.println("Make your selection! 1, 2, or 3:");
-							System.out.println("> ");
-							// Get user input 
-							userInput=k.nextLine();
-						}
-						
-						System.out.println("Congrats! The correct word was: " + answer.getWordName());
-					} // end if statement
-					
-			} else {
-				
-					System.out.println("\tOption 1: " + wordChoice2.getWordName());
-					System.out.println("\tOption 2: " + wordChoice1.getWordName());
-					System.out.println("\tOption 3: " + answer.getWordName());
-					System.out.println("\nMake your selection! 1, 2, or 3:");
-					System.out.println(">");
-					
-					// Get user input 
-					userInput=k.nextLine();
-					
-					if(userInput.equals("3")) {
-						System.out.println("Congrats! The correct word was: " + answer.getWordName());
-					} else {
-						
-						while (!userInput.equals("3")) {
-								
-							System.out.println("Incorrect! Please try again.");
-							System.out.println("Make your selection! 1, 2, or 3:");
-							System.out.println("> ");
-							// Get user input 
-							userInput=k.nextLine();
-						}
-						
-						System.out.println("Congrats! The correct word was: " + answer.getWordName());
-					} // end if statement
-					
-			}
-	
-		}// end "game" while loop	
-		
+	EmbedBuilder commandsMenu = new EmbedBuilder();
+	commandsMenu.setColor(0x66d8ff);
+
+	String options = "";
+
+	for(int i = 0; i < dic.size(); i++) {
+		options += dic.get(i).getWord() + ", ";
+
+	}
+	ArrayList<String> answer = new ArrayList<String>();
+
+	String choices = "";
+	int count = dic.size();
+	for(int i = 0; i < count; i++) {
+		Word temp = dic.remove((int)(Math.random() * (count - i)));
+		answer.add(temp.getWord());
+		int temp2 = i+1;
+		choices += temp2 + ". " + temp.getSentence().replace(temp.getWord(), "__________") + "\n";
+	}
+
+	choices += "\nThe options: " + options + "\n";
+	commandsMenu.setDescription(choices);
+	event.getChannel().sendMessage(commandsMenu.build()).queue();
+
+	return answer;
+
 	} // end method
-	
+
 	/*menu for the fillintheblank game*/
 	public static void printfillInTheBlankMenu(GuildMessageReceivedEvent event) {
 		EmbedBuilder fitbMenu = new EmbedBuilder();
@@ -237,11 +107,11 @@ public void fillInTheBlank(GuildMessageReceivedEvent event,String[] arguments, D
 				Word question = temp.get((int)Math.random() * (sizes - 1));
 				choices.set(i, question);
 			}
-			
+
 			for(int i = 0; i <= choices.size(); i++) {
 				System.out.println(choices.get(i).getDefinition() + "\n");
 			}
-			
+
 
 			/*Random rand = new Random();
 			Word answer = allWords.get(rand.nextInt(allWords.size()));
@@ -269,11 +139,11 @@ public void fillInTheBlank(GuildMessageReceivedEvent event,String[] arguments, D
 			}else{
 				System.out.println("Too bad. The correct answer was " + answer.getWordName() + ". You need to study harder.\n");
 			}*/
-			
+
 			System.out.println("Thanks for playing!\n");
-		
+
 	}
-	
+
 	public static void printfillmatching() {
 		System.out.println("Welcome to matching! Here are the rules.\n");
 		System.out.println("We will give you a definition, and you have to figure out the word that matches it.\n");

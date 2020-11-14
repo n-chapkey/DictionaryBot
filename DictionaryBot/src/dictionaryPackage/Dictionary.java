@@ -15,11 +15,13 @@ public class Dictionary {
 	}
 
 	public void appendWord(Word addedWord) {
-		allWords.add(addedWord);
+		if(getWord(addedWord.getWord()) == null) {
+			allWords.add(addedWord);
+		}
 	}
 
 	public void deleteWordByString(String removedWord) {
-		for(int i=0;i<allWords.size()-1;i++) {
+		for(int i=0;i<allWords.size();i++) {
 			if(allWords.get(i).getWordName().equals(removedWord)) {
 				allWords.remove(i);
 				return;
@@ -30,7 +32,7 @@ public class Dictionary {
 
 	public Word getWord(String name) {
 		Word theWord = null;
-		for(int i=0;i<allWords.size()-1;i++) {
+		for(int i=0;i<allWords.size();i++) {
 			if(allWords.get(i).getWordName().equals(name)) {
 				theWord = allWords.get(i);
 			}
@@ -38,7 +40,7 @@ public class Dictionary {
 
 		return theWord;
 	}
-	
+
 	public Word get(int x) {
 		return allWords.get(x);
 	}
@@ -54,5 +56,9 @@ public class Dictionary {
 
 	public int size() {
 		return allWords.size();
+	}
+
+	public ArrayList<Word> getList(){
+		return allWords;
 	}
 }
