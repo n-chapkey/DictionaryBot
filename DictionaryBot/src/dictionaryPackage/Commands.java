@@ -27,6 +27,9 @@ public class Commands extends ListenerAdapter {
 		else if(args[0].equalsIgnoreCase(Main.prefix + "blank") || args[0].equalsIgnoreCase(Main.prefix + "answerBlank:")) {
 			blank(event, args);
 		}
+		else if(args[0].equalsIgnoreCase(Main.prefix + "matching") || args[0].equalsIgnoreCase(Main.prefix + "answerMatching:")) {
+            matching(event, args);
+        }
 
 	}
 
@@ -95,9 +98,32 @@ public class Commands extends ListenerAdapter {
 		}
 	}
 	/*code for parsing ~matching command*/
-	public void matching(GuildMessageReceivedEvent event,String[] arguments, Dictionary newDict) {
-
-	}
+	public void matching(GuildMessageReceivedEvent event,String[] arguments) {
+        if(arguments[0].equalsIgnoreCase(Main.prefix + "matching")) {
+            Games new_game = new Games();
+            matchingAnswers = new_game.matching(newDict, event);
+        }
+        else if(arguments[0].equalsIgnoreCase(Main.prefix + "answerMatching:")) {
+            EmbedBuilder commandsMenu = new EmbedBuilder();
+            commandsMenu.setColor(0x66d8ff);
+            String retUser = "";
+            boolean allTrue = true;
+            for(int i = 0; i < matchingAnswers.size(); i++) {
+                if(!(arguments[i+1].equals(matchingAnswers.get(i)))) {
+                    allTrue = false;
+                    int n = i+1;
+                    retUser += "You got number " + n + " wrong! It was supposed to be "" + matchingAnswers.get(i) + ""\n";
+                }
+            }
+            if(allTrue) {
+                commandsMenu.setDescription("Congratulations! You got all of them right");
+            }
+            else {
+                commandsMenu.setDescription(retUser);
+            }
+            event.getChannel().sendMessage(commandsMenu.build()).queue();
+        }
+    }
 
    public void deleteAllWords () {
 

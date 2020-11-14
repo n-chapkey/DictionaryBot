@@ -94,53 +94,46 @@ public ArrayList<String> fillInTheBlank(Dictionary temp_1, GuildMessageReceivedE
 		event.getChannel().sendMessage(fitbMenu.build()).queue();
 	}
 
-	public void matching(GuildMessageReceivedEvent event,String[] arguments, Dictionary allWords) {
-			printfillmatching();
-			Scanner myAnswer = new Scanner(System.in);
-			//Random rand = new Random();
-			Dictionary temp = allWords;
-			int sizes = temp.size();
-			ArrayList<Word> choices = new ArrayList<Word>();
-			for(int i = 0; i <= sizes; i++) {
-				Word question = temp.get((int)Math.random() * (sizes - 1));
-				choices.set(i, question);
-			}
+	public ArrayList<String> matching(Dictionary temp_1, GuildMessageReceivedEvent event) {
+        EmbedBuilder commandsMenu = new EmbedBuilder();
+        commandsMenu.setColor(0x66d8ff);
 
-			for(int i = 0; i <= choices.size(); i++) {
-				System.out.println(choices.get(i).getDefinition() + "\n");
-			}
+        ArrayList<String> answer = new ArrayList<String>();
+        ArrayList<Word> dic = temp_1.getList();
+
+        ArrayList<String> def = new ArrayList<String>();
+        ArrayList<String> word = new ArrayList<String>();
+
+        for(int i = 0; i < dic.size(); i++) {
+            def.add(dic.get(i).getDef());
+            word.add(dic.get(i).getWord());
+
+        }
+        String question = "";
+        String options = "Options: ";
+        int count = dic.size();
+        System.out.println(count);
+        for(int i = 0; i < count; i++) {
+            String temp_def = def.remove((int)(Math.random() * (count - i)));
+            String temp_word = word.remove((int)(Math.random() * (count - i)));
+            Word t = temp_1.getWord(temp_word);
+            answer.add(temp_1.getWordFromDef(temp_def));
+            question += (i+1) + ". " + temp_def + "\n"; 
+            options += temp_word + ", ";
+
+        }
 
 
-			/*Random rand = new Random();
-			Word answer = allWords.get(rand.nextInt(allWords.size()));
-			Word wrongchoice1 = allWords.get(rand.nextInt(allWords.size()));
-			while(wrongchoice1.equals(answer)) {
-				wrongchoice1 = allWords.get(rand.nextInt(allWords.size()));
-			}
-			Word wrongchoice2 = allWords.get(rand.nextInt(allWords.size()));
-			while(wrongchoice2.equals(answer) || wrongchoice2.equals(wrongchoice1)) {
-				wrongchoice2 = allWords.get(rand.nextInt(allWords.size()));
-			}
-			System.out.println("What word fits with this definition?\n" + answer.getDefinition() + "\n");
-			String[] choices = {answer.getWordName(), wrongchoice1.getWordName(), wrongchoice2.getWordName()};
-			int correct = rand.nextInt(3);
-			if(correct == 0) {
-				System.out.println("A. " + choices[0] + "\n" + "B. " + choices[1] + "\n" + "C. " + choices[2] + "\n");
-			}else if(correct == 1) {
-				System.out.println("A. " + choices[1] + "\n" + "B. " + choices[0] + "\n" + "C. " + choices[2] + "\n");
-			}else if(correct == 2){
-				System.out.println("A. " + choices[1] + "\n" + "B. " + choices[2] + "\n" + "C. " + choices[0] + "\n");
-			}
-			String thechoice = myAnswer.nextLine();
-			if(thechoice.equals(answer.getWordName())){
-				System.out.println("Good job! Hope you didn't cheat!\n");
-			}else{
-				System.out.println("Too bad. The correct answer was " + answer.getWordName() + ". You need to study harder.\n");
-			}*/
+        for(int i = 0; i < answer.size(); i++) {
+            System.out.println(answer.get(i));
+        }
+        question += "\n" + options;
+        commandsMenu.setDescription(question);
+        event.getChannel().sendMessage(commandsMenu.build()).queue();
 
-			System.out.println("Thanks for playing!\n");
 
-	}
+        return answer;
+    }
 
 	public static void printfillmatching() {
 		System.out.println("Welcome to matching! Here are the rules.\n");

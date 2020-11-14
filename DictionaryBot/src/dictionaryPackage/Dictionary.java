@@ -19,6 +19,17 @@ public class Dictionary {
 			allWords.add(addedWord);
 		}
 	}
+	
+	public String getWordFromDef(String name) {
+        String theWord = "";
+        for(int i=0;i<allWords.size();i++) {
+            if(allWords.get(i).getDef().equals(name)) {
+                theWord = allWords.get(i).getWord();
+            }
+        }
+
+        return theWord;
+    }
 
 	public void deleteWordByString(String removedWord) {
 		for(int i=0;i<allWords.size();i++) {
