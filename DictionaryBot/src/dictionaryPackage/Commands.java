@@ -99,7 +99,9 @@ public class Commands extends ListenerAdapter {
 	}
 	/*code for parsing ~matching command*/
 	public void matching(GuildMessageReceivedEvent event,String[] arguments) {
-        if(arguments[0].equalsIgnoreCase(Main.prefix + "matching")) {
+		ArrayList<String> matchingAnswers = new ArrayList<String>();
+		
+		if(arguments[0].equalsIgnoreCase(Main.prefix + "matching")) {
             Games new_game = new Games();
             matchingAnswers = new_game.matching(newDict, event);
         }
@@ -112,7 +114,7 @@ public class Commands extends ListenerAdapter {
                 if(!(arguments[i+1].equals(matchingAnswers.get(i)))) {
                     allTrue = false;
                     int n = i+1;
-                    retUser += "You got number " + n + " wrong! It was supposed to be "" + matchingAnswers.get(i) + ""\n";
+                    retUser += "You got number " + n + " wrong! It was supposed to be " + matchingAnswers.get(i) + "\n";
                 }
             }
             if(allTrue) {
