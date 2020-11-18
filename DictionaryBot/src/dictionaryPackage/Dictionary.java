@@ -23,7 +23,7 @@ public class Dictionary {
 	public String getWordFromDef(String name) {
         String theWord = "";
         for(int i=0;i<allWords.size();i++) {
-            if(allWords.get(i).getDef().equals(name)) {
+            if(allWords.get(i).getDef().equalsIgnoreCase(name)) {
                 theWord = allWords.get(i).getWord();
             }
         }
@@ -33,7 +33,7 @@ public class Dictionary {
 
 	public void deleteWordByString(String removedWord) {
 		for(int i=0;i<allWords.size();i++) {
-			if(allWords.get(i).getWordName().equals(removedWord)) {
+			if(allWords.get(i).getWordName().equalsIgnoreCase(removedWord)) {
 				allWords.remove(i);
 				return;
 			}
@@ -44,7 +44,7 @@ public class Dictionary {
 	public Word getWord(String name) {
 		Word theWord = null;
 		for(int i=0;i<allWords.size();i++) {
-			if(allWords.get(i).getWordName().equals(name)) {
+			if(allWords.get(i).getWordName().equalsIgnoreCase(name)) {
 				theWord = allWords.get(i);
 			}
 		}
