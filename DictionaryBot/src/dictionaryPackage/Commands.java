@@ -56,9 +56,16 @@ public class Commands extends ListenerAdapter {
 		definitionMenu.setColor(0x66d8ff);
 		Word temp = new Word(arguments[1]);
 		newDict.appendWord(temp);
-		definitionMenu.setDescription(temp.getDef());
-		event.getChannel().sendMessage(definitionMenu.build()).queue();}
-	}
+		if(temp.getDef().length() != 0){
+			definitionMenu.setDescription(temp.getDef());
+			event.getChannel().sendMessage(definitionMenu.build()).queue();
+		}
+		else{
+			String message = "Not a valid word";
+			commandsMenu.setDescription(message);
+			event.getChannel().sendMessage(commandsMenu.build()).queue();
+		}
+	}}
 
 	public void allWords(GuildMessageReceivedEvent event,String[] arguments) {
 		String result = newDict.getAllWords();
@@ -100,7 +107,7 @@ public class Commands extends ListenerAdapter {
 	/*code for parsing ~matching command*/
 	public void matching(GuildMessageReceivedEvent event,String[] arguments) {
 		ArrayList<String> matchingAnswers = new ArrayList<String>();
-		
+
 		if(arguments[0].equalsIgnoreCase(Main.prefix + "matching")) {
             Games new_game = new Games();
             matchingAnswers = new_game.matching(newDict, event);
