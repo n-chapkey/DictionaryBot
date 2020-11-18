@@ -80,8 +80,8 @@ public class Commands extends ListenerAdapter {
 		}
 		else{
 			String message = "Not a valid word";
-			commandsMenu.setDescription(message);
-			event.getChannel().sendMessage(commandsMenu.build()).queue();
+			definitionMenu.setDescription(message);
+			event.getChannel().sendMessage(definitionMenu.build()).queue();
 		}
 	}}
 
