@@ -10,6 +10,7 @@ public class Commands extends ListenerAdapter {
 
 	Dictionary newDict = new Dictionary();
 	ArrayList<String> blankAnswers;
+	ArrayList<String> matchingAnswers;
 
 	public void onGuildMessageReceived(GuildMessageReceivedEvent event) {
 		String[] args = event.getMessage().getContentRaw().split("\\s+");
@@ -28,8 +29,20 @@ public class Commands extends ListenerAdapter {
 			blank(event, args);
 		}
 		else if(args[0].equalsIgnoreCase(Main.prefix + "matching") || args[0].equalsIgnoreCase(Main.prefix + "answerMatching:")) {
-            matching(event, args);
-        }
+      matching(event, args);
+    }
+		else if((args[0].equalsIgnoreCase(Main.prefix + "delete"))) {
+			deleteAWord(event, args);
+		}
+		else if((args[0].equalsIgnoreCase(Main.prefix + "deleteAllWords"))) {
+			deleteAllWords(event, args);
+		}
+		else if(args[0].indexOf('~') != -1){
+			EmbedBuilder commandsMenu = new EmbedBuilder();
+			commandsMenu.setColor(0x66d8ff);
+			commandsMenu.setDescription("Not a valid command");
+			event.getChannel().sendMessage(commandsMenu.build()).queue();
+		}
 
 	}
 
@@ -106,7 +119,6 @@ public class Commands extends ListenerAdapter {
 	}
 	/*code for parsing ~matching command*/
 	public void matching(GuildMessageReceivedEvent event,String[] arguments) {
-		ArrayList<String> matchingAnswers = new ArrayList<String>();
 
 		if(arguments[0].equalsIgnoreCase(Main.prefix + "matching")) {
             Games new_game = new Games();
@@ -134,11 +146,24 @@ public class Commands extends ListenerAdapter {
         }
     }
 
-   public void deleteAllWords () {
-
+   public void deleteAllWords (GuildMessageReceivedEvent event,String[] arguments) {
+		 ArrayList<Word> temp_dict = newDict.getList();
+		 temp_dict.clear();
+		 EmbedBuilder commandsMenu = new EmbedBuilder();
+		 commandsMenu.setColor(0x66d8ff);
+		 commandsMenu.setDescription("All the words have been successfully deleted");
+		 event.getChannel().sendMessage(commandsMenu.build()).queue();
    }
 
    public void deleteAWord () {
-
+		 Word temp = newDict.getWord(arguments[1]);
+		 newDict.deleteWordByString(arguments[1]);
+		 EmbedBuilder commandsMenu = new EmbedBuilder();
+	 	 commandsMenu.setColor(0x66d8ff);
+	 			if(temp != null)
+		 				commandsMenu.setDescription("the word " + temp.getWord().toUpperCase() + " has been successfully deleted");
+	 			else
+		 				commandsMenu.setDescription("Cannot delete the word");
+	 			event.getChannel().sendMessage(commandsMenu.build()).queue();
    }
 }
