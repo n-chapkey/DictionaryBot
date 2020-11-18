@@ -33,7 +33,7 @@ public class Word {
 		Element sent = doc2.select("p").first();
 
 		definition = "The definition is: " + def.text();
-		sentence = sent.text();
+		sentence = sent.text().toLowerCase();
 		String title = doc.title();
 		System.out.println(definition);
 		System.out.println(sentence);
@@ -51,7 +51,7 @@ public class Word {
 	public String getWord() {
 		return wordName;
 	}
-	
+
 	public String getWordName() {
 		return wordName;
 	}
@@ -103,6 +103,5 @@ public class Word {
 	public static void main(String[] args) throws IOException {
 		Word ws = new Word("43423423432");
 	}
-	
-}
 
+}
