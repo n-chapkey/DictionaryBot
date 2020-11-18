@@ -24,7 +24,7 @@ public class Main {
 		
 		JDA jda = JDABuilder.createDefault(token).build();
 		jda.getPresence().setStatus(OnlineStatus.ONLINE);
-		jda.getPresence().setActivity(Activity.listening("To kpop"));
+		jda.getPresence().setActivity(Activity.watching("for ~commands to be written"));
 		
 		jda.addEventListener(new Commands());
 	}
