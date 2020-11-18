@@ -155,7 +155,7 @@ public class Commands extends ListenerAdapter {
 		 event.getChannel().sendMessage(commandsMenu.build()).queue();
    }
 
-   public void deleteAWord () {
+   public void deleteAWord (GuildMessageReceivedEvent event,String[] arguments) {
 		 Word temp = newDict.getWord(arguments[1]);
 		 newDict.deleteWordByString(arguments[1]);
 		 EmbedBuilder commandsMenu = new EmbedBuilder();
