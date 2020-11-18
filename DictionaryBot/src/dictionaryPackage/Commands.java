@@ -61,7 +61,7 @@ public class Commands extends ListenerAdapter {
 					+ " **~answerBlank: choice1 choice2 choice3** blank game answer format \n"
 					+ " **~answerMatching: choice1 choice2 choice3** matching game asnwer format \n"
 					+ " **~delete word** deletes a word \n"
-					+ " **deleteAllWords** deletes all the words from dictionary"
+					+ " **~deleteAllWords** deletes all the words from dictionary"
 					 );
 			event.getChannel().sendMessage(commandsMenu.build()).queue();
 
